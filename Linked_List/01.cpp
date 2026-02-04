@@ -12,6 +12,7 @@ class Node{
     }
 };
 
+
 void insert(Node* &head,int val){
     Node* node = new Node(val);
 
@@ -24,7 +25,6 @@ void insert(Node* &head,int val){
         temp=temp->next;
     }
     temp->next = node;
-    cout<<"insert Succesful"<<endl;
 }
 
 void insertatBegin(Node* &head,int val){
@@ -59,6 +59,20 @@ void insertatPos(Node* &head,int pos,int val){
     node->next = temp2;
 
 }
+void deleteatPos(Node* &head,int pos){
+    if(head==NULL) return;
+    Node* temp = head;
+    if(pos=1){
+        head=head->next;
+        delete temp;
+    }
+    for(int i=1;i<pos-1;i++){
+        temp = temp->next;
+    }
+    Node* temp2 = temp->next;
+    temp->next = temp->next->next;
+    delete temp2;
+}
 int main(){
     Node* head = NULL;
     insert(head,5);
@@ -71,5 +85,8 @@ int main(){
     insertatPos(head,4,0);
     printLL(head);
     insertatPos(head,1,0);
+    printLL(head);
+    deleteatPos(head,5);
+    insert(head,7);
     printLL(head);
 }
