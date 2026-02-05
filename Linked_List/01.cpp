@@ -1,6 +1,6 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-
 class Node{
     public:
     int data;
@@ -35,7 +35,7 @@ void insertatBegin(Node* &head,int val){
 
 }
 
-void printLL(Node* head){
+void printLL(Node* &head){
     Node* temp=head;
     while(temp != NULL){
         cout<<temp->data<<" -> ";
@@ -73,20 +73,62 @@ void deleteatPos(Node* &head,int pos){
     temp->next = temp->next->next;
     delete temp2;
 }
+int evenc(Node* &head){
+    int count=0;
+    Node* temp = head;
+    while(temp->next != nullptr){
+        if(temp->data %2 == 0){
+            count++;
+        }
+        temp = temp->next;
+    }
+    return count;
+}
+
+void insertArray(Node* &head,vector<int> nums){
+    for(int i=0;i<nums.size();i++){
+        insert(head,nums[i]);
+    }
+    return;
+}
+void search_rec(Node* &head,int key){
+    if(head==nullptr){
+        cout << "Not in LL" << endl;
+        return;
+    }
+    if(head->data==key){
+        cout << "found" <<endl;
+        return;
+    }
+    search_rec(head->next,key);
+}
 int main(){
-    Node* head = NULL;
-    insert(head,5);
-    insert(head,6);
-    insertatBegin(head,4);
-    insertatBegin(head,3);
-    insertatBegin(head,2);
-    insertatBegin(head,1);
-    printLL(head);
-    insertatPos(head,4,0);
-    printLL(head);
-    insertatPos(head,1,0);
-    printLL(head);
-    deleteatPos(head,5);
-    insert(head,7);
-    printLL(head);
+    // Node* head = NULL;
+    // insert(head,5);
+    // insert(head,6);
+    // insertatBegin(head,4);
+    // insertatBegin(head,3);
+    // insertatBegin(head,2);
+    // insertatBegin(head,1);
+    // printLL(head);
+    // insertatPos(head,4,0);
+    // printLL(head);
+    // insertatPos(head,1,0);
+    // printLL(head);
+    // deleteatPos(head,5);
+    // insert(head,7);
+    // printLL(head);
+    Node* head2=NULL;
+    // insert(head2,33);
+    // insert(head2,42);
+    // insert(head2,18);
+    // insert(head2,11);
+    // insert(head2,17);
+    vector<int> arr = {33,42,18,11,17};
+    insertArray(head2,arr);
+    printLL(head2);
+    cout << evenc(head2) << endl;
+    search_rec(head2,18);
+    search_rec(head2,17);
+    search_rec(head2,16);
 }
