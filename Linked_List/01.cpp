@@ -127,8 +127,8 @@ int main(){
     vector<int> arr = {33,42,18,11,17};
     insertArray(head2,arr);
     printLL(head2);
-    cout << evenc(head2) << endl;
-    search_rec(head2,18);
-    search_rec(head2,17);
-    search_rec(head2,16);
+    // cout << evenc(head2) << endl;
+    // search_rec(head2,18);
+    // search_rec(head2,17);
+    // search_rec(head2,16);
 }
